@@ -23,6 +23,11 @@ public class Huesped {
     @Column(name = "domicilio_alternativo")
     private String domicilioAlternativo;
 
+    @OneToMany(mappedBy = "huesped", cascade = CascadeType.ALL)
+    private List<Reserva> reservas = new ArrayList<>();
+
+
+
     public Huesped(String nombre) {
         this.nombre = nombre;
 
@@ -80,6 +85,14 @@ public class Huesped {
 
     public void setDomicilioAlternativo(String domicilioAlternativo) {
         this.domicilioAlternativo = domicilioAlternativo;
+    }
+
+    public List<Reserva> getReservas() {
+        return reservas;
+    }
+
+    public void setReservas(List<Reserva> reservas) {
+        this.reservas = reservas;
     }
 
 }
