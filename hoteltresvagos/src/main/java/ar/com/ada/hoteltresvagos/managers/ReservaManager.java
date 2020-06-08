@@ -83,7 +83,20 @@ public class ReservaManager {
 
         }
 
+        public List<Reserva> buscarPorNombreHuesped(String nombre){
 
+            Session session = sessionFactory.openSession();
+    
+            
+            Query queryForma1 = session.createNativeQuery(
+                "SELECT * FROM reserva r inner join huesped h on h.huesped_id = r.huesped_id where nombre= ?",
+                Reserva.class);
+        queryForma1.setParameter(1, nombre);
+    
+        List<Reserva> reservas = queryForma1.getResultList();
+    
+            return reservas;
+        }
    /* public List<Reserva> buscarPorNombreHuesped(String nombre) {
 
         Session session = sessionFactory.openSession();

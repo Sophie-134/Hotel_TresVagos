@@ -115,7 +115,11 @@ public class Reserva {
         this.huesped = huesped;
         this.huesped.getReservas().add(this);
     }
-
+    //Sirve para debugear, no usar para mostrar en la terminal(usar .getAlgo())
+@Override
+public String toString(){
+    return " [reservaid = "+ this.getReservaId() + ", importe = " + this.getImporteTotal()+ "] ";
+}
     /* double importe=0
     double impoerte2=1
     double importe3= importe + importe2;

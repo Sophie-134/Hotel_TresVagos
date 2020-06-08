@@ -66,6 +66,9 @@ public class ABM {
                     case 8:
                         listarReserva();
                         break;
+                    case 9:
+                        listarReservaPorNombre();
+                        break;
 
                     default:
                         System.out.println("La opcion no es correcta.");
@@ -312,7 +315,7 @@ public class ABM {
         reserva.setHuesped(huespedEncontrado);// Esta es la relacion bidireccional
 
         ABMReserva.create(reserva);
-        System.out.println("Reserva generada con exito.  " + reserva);
+        System.out.println("Reserva generada con exito.  " + reserva.getReservaId());
 
     }
 
@@ -358,6 +361,18 @@ public void eliminarReserva(){
 
     }
 
+    public void listarReservaPorNombre() {
+
+        System.out.println("Ingrese el nombre:");
+        String nombre = Teclado.nextLine();
+
+            List<Reserva> reserva = ABMReserva.buscarPorNombreHuesped(nombre);
+            for (Reserva r : reserva) {
+                mostrarReserva(r);
+            }
+        }
+    
+
     public static void printOpciones() {
         System.out.println("=======================================");
         System.out.println("");
@@ -369,6 +384,7 @@ public void eliminarReserva(){
         System.out.println("6. Para hacer una reserva.");
         System.out.println("7. Para eliminar una reserva.");
         System.out.println("8. Para ver la lista de reservas.");
+        System.out.println("9. Buscar una reserva por nombre de huesped.");
         System.out.println("0. Para terminar.");
         System.out.println("");
         System.out.println("=======================================");
