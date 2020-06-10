@@ -5,6 +5,8 @@ import java.util.Date;
 
 import javax.persistence.*;
 
+import ar.com.ada.hoteltresvagos.entities.Reportes.Reporte1;
+
 @Entity
 @Table(name="reserva")
 public class Reserva {
@@ -33,7 +35,7 @@ public class Reserva {
     @ManyToOne
     @JoinColumn(name= "huesped_id", referencedColumnName = "huesped_id")
     private Huesped huesped;
-
+   
 
     public int getReservaId() {
         return reservaId;
@@ -99,7 +101,7 @@ public class Reserva {
         this.importePagado = importePagado;
     }
 
-    public int getTipoDeEstadoId() {
+   public int getTipoDeEstadoId() {
         return tipoDeEstadoId;
     }
 

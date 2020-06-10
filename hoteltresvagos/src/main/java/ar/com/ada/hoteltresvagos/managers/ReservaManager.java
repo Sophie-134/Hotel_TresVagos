@@ -31,12 +31,10 @@ public class ReservaManager {
         }
 
     }
-
     public void exit() {
         sessionFactory.close();
     }
-
-
+    
     public void create(Reserva reserva) {
 
         Session session = sessionFactory.openSession();
@@ -68,6 +66,7 @@ public class ReservaManager {
         session.getTransaction().commit();
         session.close();
     }
+
 
     public List<Reserva> buscarTodosR() {
 
@@ -125,5 +124,5 @@ public class ReservaManager {
         return reservas;
 
     }*/
-
+    
 }

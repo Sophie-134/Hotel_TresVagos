@@ -8,7 +8,9 @@ import java.util.Scanner;
 
 import org.hibernate.exception.ConstraintViolationException;
 
+import ar.com.ada.hoteltresvagos.Service.ReporteService;
 import ar.com.ada.hoteltresvagos.entities.*;
+import ar.com.ada.hoteltresvagos.entities.Reportes.*;
 import ar.com.ada.hoteltresvagos.excepciones.*;
 import ar.com.ada.hoteltresvagos.managers.*;
 
@@ -18,12 +20,16 @@ public class ABM {
 
     protected HuespedManager ABMHuesped = new HuespedManager();
     protected ReservaManager ABMReserva = new ReservaManager();
+    protected ReporteManager ABMReporte = new ReporteManager();
+
+    protected ReporteService reporteService = new ReporteService(ABMReporte);
 
     public void iniciar() throws Exception {
 
         try {
             ABMReserva.setup();
             ABMHuesped.setup();
+            ABMReporte.setup();
 
             printOpciones();
 
@@ -69,6 +75,9 @@ public class ABM {
                     case 9:
                         listarReservaPorNombre();
                         break;
+                    case 10:
+                        reporteService.EstadoDeLasReservas();
+                        break;
 
                     default:
                         System.out.println("La opcion no es correcta.");
@@ -84,6 +93,7 @@ public class ABM {
             // Hago un safe exit del manager
             ABMHuesped.exit();
             ABMReserva.exit();
+            ABMReporte.exit();
 
         } catch (Exception e) {
             // TODO: handle exception
@@ -373,6 +383,9 @@ public void eliminarReserva(){
         }
     
 
+
+
+
     public static void printOpciones() {
         System.out.println("=======================================");
         System.out.println("");
@@ -385,6 +398,7 @@ public void eliminarReserva(){
         System.out.println("7. Para eliminar una reserva.");
         System.out.println("8. Para ver la lista de reservas.");
         System.out.println("9. Buscar una reserva por nombre de huesped.");
+        System.out.println("10. Ver el estado de las reservas.");
         System.out.println("0. Para terminar.");
         System.out.println("");
         System.out.println("=======================================");
