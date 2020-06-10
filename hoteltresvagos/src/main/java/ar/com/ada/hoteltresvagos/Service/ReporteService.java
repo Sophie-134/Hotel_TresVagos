@@ -20,7 +20,18 @@ public class ReporteService {
 }
 
     public void mostrarEstadoR(Reporte1 reportes){
-        System.out.println("Total de la Reserva: " + reportes.getTotalReservas() + " Total Pagado: " + reportes.getTotalPagado()+ " Total del Importe: "+ reportes.getTotalImporte()+ " Estado de la Reserva: " + reportes.getDescripcion());
+        System.out.println("Id de la reserva: "+ reportes.getId()+ " Estado de la Reserva: " + reportes.getDescripcion() + " Total de la Reserva: " + reportes.getTotalReservas() + " Total Pagado: " + reportes.getTotalPagado()+ " Total del Importe: "+ reportes.getTotalImporte());
+    }
+
+    public void EstadoDeLosHuespedes(){
+        List<Reporte2> todos = ABMReporte.buscarEstadoHuesped();
+    for (Reporte2 r : todos) {
+        mostrarEstadoH(r);
+    }
+}
+
+    public void mostrarEstadoH(Reporte2 reportes){
+        System.out.println("Id del huesped: "+ reportes.getId()+ " Nombre: " + reportes.getNombre() + " Importe de la Reserva: " + reportes.getImporteReserva() + " Importe Pagado: " + reportes.getImportePagado()+ " Total del Importe: "+ reportes.getTotalImporte());
     }
 
 }

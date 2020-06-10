@@ -13,28 +13,28 @@ import ar.com.ada.hoteltresvagos.entities.Reserva;
 public class Reporte1 {
  
     @Id
-   // @Column(name= "id")
+    @Column(name= "id")
     //no estamos agregando datos
     //@GeneratedValue (strategy = GenerationType.IDENTITY)
-    //private int id;
+    private int id;
     @Column(name= "descripcion")
     private String descripcion;
     @Column(name= "total_reservas")
-    private int totalReservas;
+    private double totalReservas;
     @Column(name= "total_pagado")
-    private int totalPagado;
+    private double totalPagado;
     @Column(name= "total_importe")
-    private int totalImporte;
+    private double totalImporte;
     
 
 
-    /*public int getId() {
+    public int getId() {
         return id;
     }
 
     public void setId(int id) {
         this.id = id;
-    }*/
+    }
 
     public String getDescripcion() {
         return descripcion;
@@ -44,7 +44,7 @@ public class Reporte1 {
         this.descripcion = descripcion;
     }
 
-    public int getTotalReservas() {
+    public double getTotalReservas() {
         return totalReservas;
     }
 
@@ -52,7 +52,7 @@ public class Reporte1 {
         this.totalReservas = totalReservas;
     }
 
-    public int getTotalPagado() {
+    public double getTotalPagado() {
         return totalPagado;
     }
 
@@ -60,7 +60,7 @@ public class Reporte1 {
         this.totalPagado = totalPagado;
     }
 
-    public int getTotalImporte() {
+    public double getTotalImporte() {
         return totalImporte;
     }
 

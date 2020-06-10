@@ -41,7 +41,7 @@ public class ReporteManager {
 
         Session session = sessionFactory.openSession();
 
-            Query query = session.createNativeQuery("SELECT t.descripcion, sum(r.importe_reserva) total_reservas, sum(r.importe_pagado) total_pagado, sum(r.importe_total) total_importe FROM reserva r inner join tipo_de_estado t on r.estado2 = t.id GROUP BY t.descripcion", Reporte1.class);
+            Query query = session.createNativeQuery("SELECT t.id, t.descripcion, sum(r.importe_reserva) total_reservas, sum(r.importe_pagado) total_pagado, sum(r.importe_total) total_importe FROM reserva r inner join tipo_de_estado t on r.estado2 = t.id GROUP BY t.id", Reporte1.class);
             //query.setParameter(1, descripcion);
 
         List<Reporte1> reportes = query.getResultList();
@@ -49,4 +49,18 @@ public class ReporteManager {
         return reportes;
 
         }
+
+        public List<Reporte2> buscarEstadoHuesped() {
+
+            Session session = sessionFactory.openSession();
+    
+                Query query = session.createNativeQuery("select h.huesped_id, h.nombre, sum(r.importe_reserva) importe_reserva, sum(r.importe_pagado) importe_pagado, sum(r.importe_total) total_importe from huesped h inner join reserva r on h.huesped_id = r.huesped_id group by h.huesped_id, h.nombre;", Reporte2.class);
+                //query.setParameter(1, descripcion);
+    
+            List<Reporte2> reportes = query.getResultList();
+    
+            return reportes;
+    
+            }
+
     }
